@@ -1,15 +1,17 @@
 import { SYSTEMS } from './data';
 
 export function riskScore(ratings: Record<string, number>): number {
-  let total = 0, count = 0;
+  let weightedTotal = 0, weightSum = 0;
   for (const sys of SYSTEMS) {
     const r = ratings[sys.id];
     if (r !== undefined && r > 0) {
-      total += (6 - r) * sys.weight;
-      count++;
+      weightedTotal += (6 - r) * sys.weight;
+      weightSum += sys.weight;
     }
   }
-  return count === 0 ? 0 : Math.round((total / count) * 10);
+  if (weightSum === 0) return 0;
+  const avg = weightedTotal / weightSum;
+  return Math.round(((avg - 1) / 4) * 100);
 }
 
 export function avgRating(ratings: Record<string, number>): number | null {
