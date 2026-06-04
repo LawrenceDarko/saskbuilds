@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white border border-gray-200 rounded-lg;
+  }
+  .sec-label {
+    @apply text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-2.5;
+  }
+  .badge {
+    @apply text-[11px] px-2 py-0.5 rounded font-semibold;
+  }
+  .badge-h {
+    @apply bg-riskH-bg text-riskH;
+  }
+  .badge-m {
+    @apply bg-riskM-bg text-riskM;
+  }
+  .badge-l {
+    @apply bg-riskL-bg text-riskL;
+  }
+}
